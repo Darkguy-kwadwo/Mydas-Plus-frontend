@@ -1,0 +1,201 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-heading: var(--font-display);
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Outfit', system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+
+  --color-background: #f5f8ef;
+  --color-foreground: #143d24;
+  --color-card: #ffffff;
+  --color-card-foreground: #143d24;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #143d24;
+  --color-primary: #1f8a3c;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #eef6c9;
+  --color-secondary-foreground: #1a4d28;
+  --color-muted: #e8efdc;
+  --color-muted-foreground: #4d6354;
+  --color-accent: #d4e84a;
+  --color-accent-foreground: #143d24;
+  --color-destructive: oklch(0.577 0.245 27.325);
+  --color-border: #d5e0c8;
+  --color-input: #f2f7e8;
+  --color-ring: #1f8a3c;
+  --color-chart-1: #1f8a3c;
+  --color-chart-2: #d4e84a;
+  --color-chart-3: #eef6c9;
+  --color-chart-4: #166b2f;
+  --color-chart-5: #a8c93a;
+  --color-sidebar: #f5f8ef;
+  --color-sidebar-foreground: #143d24;
+  --color-sidebar-primary: #1f8a3c;
+  --color-sidebar-primary-foreground: #ffffff;
+  --color-sidebar-accent: #d4e84a;
+  --color-sidebar-accent-foreground: #143d24;
+  --color-sidebar-border: #d5e0c8;
+  --color-sidebar-ring: #1f8a3c;
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: light;
+  --background: #f5f8ef;
+  --foreground: #143d24;
+  --card: #ffffff;
+  --card-foreground: #143d24;
+  --popover: #ffffff;
+  --popover-foreground: #143d24;
+  --primary: #1f8a3c;
+  --primary-foreground: #ffffff;
+  --secondary: #eef6c9;
+  --secondary-foreground: #1a4d28;
+  --muted: #e8efdc;
+  --muted-foreground: #4d6354;
+  --accent: #d4e84a;
+  --accent-foreground: #143d24;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #d5e0c8;
+  --input: #f2f7e8;
+  --ring: #1f8a3c;
+  --chart-1: #1f8a3c;
+  --chart-2: #d4e84a;
+  --chart-3: #eef6c9;
+  --chart-4: #166b2f;
+  --chart-5: #a8c93a;
+  --radius: 0.5rem;
+  --sidebar: #f5f8ef;
+  --sidebar-foreground: #143d24;
+  --sidebar-primary: #1f8a3c;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #d4e84a;
+  --sidebar-accent-foreground: #143d24;
+  --sidebar-border: #d5e0c8;
+  --sidebar-ring: #1f8a3c;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 100% -10%, rgb(212 232 74 / 0.22), transparent),
+      radial-gradient(ellipse 60% 40% at 0% 100%, rgb(31 138 60 / 0.08), transparent);
+    background-attachment: fixed;
+    text-rendering: optimizeLegibility;
+  }
+  html {
+    @apply font-sans scroll-smooth;
+  }
+  ::selection {
+    background: #d4e84a;
+    color: #143d24;
+  }
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+  input[type='checkbox'],
+  input[type='radio'],
+  input[type='range'] {
+    accent-color: #1f8a3c;
+  }
+}
+
+@keyframes home-ken-burns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.home-hero-image {
+  animation: home-ken-burns 22s ease-out forwards;
+}
+
+.reveal {
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.reveal-delay-1 {
+  animation-delay: 0.08s;
+}
+.reveal-delay-2 {
+  animation-delay: 0.16s;
+}
+.reveal-delay-3 {
+  animation-delay: 0.24s;
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #e8efdc;
+}
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  animation: shimmer 1.25s infinite;
+}
+
+.category-rail {
+  scrollbar-width: none;
+}
+.category-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-chip {
+  @apply w-full text-left px-3 py-2.5 rounded-md transition font-medium text-sm;
+}
+.filter-chip-active {
+  @apply bg-primary text-primary-foreground shadow-[0_8px_20px_-12px_rgba(31,138,60,0.8)];
+}
+.filter-chip-idle {
+  @apply bg-secondary text-secondary-foreground hover:bg-accent hover:text-accent-foreground;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-medium
+    transition duration-200 hover:bg-[#166b2f] active:scale-[0.98]
+    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2;
+}
